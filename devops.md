@@ -60,4 +60,10 @@ When you point Prometheus at your load‑balancer (LB) instead of each backend i
 By scraping at the instance level, you ensure **completeness**, **visibility**, and **flexibility**—cornerstones of reliable monitoring.
 
 
- 
+ D1: whats the difference between namespaces and labels in metadata of manifests? cant we just add a team: backend label instead of applying a backend-team namespace to pods?
+ D2: need more clarity on diff between deployment and clusters
+
+services are needed because k8 pods need to be configured in order to be exposed either to each other or over the network, services are what allow us to do that. pods run independently otherwise, inaccessible to fellow pods or to the internet
+
+3 types of services- 1. nodeport 2. clusterip 3. lb
+1 and 3 expose pods over the internet, 2 exposes the pods only to each other. if be pod needs to be accessed by the fe pod, that can be done using the clusterip
